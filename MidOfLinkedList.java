@@ -1,3 +1,4 @@
+
 public class MidOfLinkedList {
     public static class Node
     {
@@ -9,25 +10,25 @@ public class MidOfLinkedList {
             this.next=null;
         }   
     }
-    public static Node midOfLinkedList(Node start)
+    public static int midOfLinkedList(Node head)
     {
-        Node slow=start;
-        Node fast=start;
-        while(fast!=null && fast.next!=null)
+        Node slow=head;
+        Node fast=head;
+        while(fast.next!=null && fast.next.next!=null)
         {
             slow=slow.next;
             fast=fast.next.next;
         }
-        return slow;
+        return slow.val;
     }
     public static void main(String[] args) {
-        Node start=new Node(2);
-        start.next=new Node(4);
-        start.next.next=new Node(5);
-        start.next.next.next=new Node(7);
-        start.next.next.next.next=new Node(9);
-        Node result=midOfLinkedList(start);
-        System.out.println(result.val);
+        Node head=new Node(2);
+        head.next=new Node(4);
+        head.next.next=new Node(5);
+        head.next.next.next=new Node(7);
+        head.next.next.next.next=new Node(9);
+        int res=midOfLinkedList(head);
+        System.out.println(res);
     }
 }
 
@@ -43,4 +44,13 @@ This two pointer approach will work for both even and odd length array.
 
 Time complexity is O(n).
 */
-  
+
+
+/*   
+1-2-3-4-5-6-7-8 
+11, 23, 35, 47, 5 7.next.next=null
+
+1-2-3-4-5-6-7-8-9  
+11, 23, 35, 47, 59, 9.next=null
+
+*/
